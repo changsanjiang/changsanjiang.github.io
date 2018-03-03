@@ -1,5 +1,4 @@
-# [SJVideoPlayer](https://github.com/changsanjiang/SJVideoPlayer) 文档
-
+陆续更新中...
 
 # 播放一个视频
 ### SJVideoPlayerURLAsset
