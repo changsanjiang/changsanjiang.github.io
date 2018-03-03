@@ -1,0 +1,8 @@
+---
+layout: default
+title: Hello World!
+---
+
+<h2>{{ page.title }}</h2>
+<p>my first post</p>
+<p>{{ page.date | date_to_string }}</p>
