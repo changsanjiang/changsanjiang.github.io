@@ -4,7 +4,7 @@ title:  "SJVideoPlayer 文档"
 陆续更新中...
 
 # 播放一个视频
-### SJVideoPlayerURLAsset
+### [SJVideoPlayerURLAsset](https://github.com/changsanjiang/SJBaseVideoPlayer/blob/master/SJBaseVideoPlayer/Model/SJVideoPlayerURLAsset.h)
 此类用于初始化视频资源. 由Media的URL及一些附加信息创建.
 
 示例:
