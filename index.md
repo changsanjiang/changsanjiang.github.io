@@ -6,16 +6,14 @@ layout: default
 title: changsanjiang blog
 ---
 <div class="home">
-
 	<h1 class="page-heading">Posts</h1>
 	<ul class="post-list">
 		<li>
-			<span class="post-meta">Mar 3, 2018</span>
 			<h2>
 				{% for post in site.posts %}
-					<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+				<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
 				{% endfor %}
-			</h2>
+  		</h2>
 		</li>
 	</ul>
 	<p class="rss-subscribe">subscribe <a href="/feed.xml">via RSS</a></p>
