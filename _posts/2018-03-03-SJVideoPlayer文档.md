@@ -96,3 +96,5 @@ videoPlayer.URLAsset =
   - superviewTag   此为播放器父视图的 tag. 播放器将会依据此 tag 作为条件之一, 来判断是否滚动出现.
   - scrollViewIndexPath   此为 collection view 所在的 table cell 位于 table view 中的位置.
   - scrollViewTag   此为 collection view 的 tag. 播放器将会依据此 tag 作为条件之一, 来判断是否滚动出现.
+
+
