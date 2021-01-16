@@ -1,0 +1,134 @@
+---
+layout: darkly
+title: Ruby 常用方法
+tag: test
+---
+
+# [一些预定义的符号变量](https://ruby-doc.org/core-2.3.0/doc/globals_rdoc.html)
+
+[$/](https://stackoverflow.com/questions/37347895/what-does-mean-in-ruby) The input record separator, newline by default.
+
+如下, 当改为"\n\n"时, 需要按两次"enter"后输入的命令才会被执行.
+```ruby
+>> $/  
+=> "\n"
+>> 
+>> $/ = "\n\n"
+=> "\n\n"
+>> 
+
+>> a = gets
+
+Hello    
+
+=> "Hello\n\n"
+>> a
+
+=> "Hello\n\n"
+>> 
+```
+
+____
+
+# String 
+
+## String => removes
+
+[String::chomp -> new_str](https://ruby-doc.org/core-2.7.2/String.html#method-i-chomp)
+
+Returns a new String with the given record separator removed from the end of str (if present). If $/ has not been changed from the default Ruby record separator, then chomp also removes carriage return characters (that is it will remove \n, \r, and \r\n). If $/ is an empty string, it will remove all trailing newlines from the string.
+
+```ruby
+>> "12\n".chomp # "12"
+>> "12\n34".chomp "34" # "12\n"
+>> "12\r\r".chomp # "12\r"
+>> "12\n\n".chomp # "12\n"
+>> "12\r\n\r\n".chomp # "12\r\n"
+```
+    
+[String::strip -> new_str](https://ruby-doc.org/core-2.7.2/String.html#method-i-strip)
+
+Returns a copy of the receiver with leading and trailing whitespace removed.
+
+Whitespace is defined as any of the following characters: null, horizontal tab, line feed, vertical tab, form feed, carriage return, space.
+
+```ruby
+>> "    hello    ".strip   #=> "hello"
+>> "\tgoodbye\r\n".strip   #=> "goodbye"
+>> "\x00\t\n\v\f\r ".strip #=> ""
+>> "hello".strip           #=> "hello"
+```
+
+[String::chomp! -> self or nil](https://ruby-doc.org/core-2.7.2/String.html#method-i-chomp-21)
+
+[String::strip! -> new_str](https://ruby-doc.org/core-2.7.2/String.html#method-i-strip-21)
+
+
+
+## String => substrings
+
+[String::split(pattern=nil, [limit]) -> an_array](https://ruby-doc.org/core-2.7.2/String.html#method-i-split)
+
+Divides str into substrings based on a delimiter, returning an array of these substrings.
+
+If pattern is a String, then its contents are used as the delimiter when splitting str. If pattern is a single space, str is split on whitespace, with leading and trailing whitespace and runs of contiguous whitespace characters ignored.
+
+If pattern is a Regexp, str is divided where the pattern matches. Whenever the pattern matches a zero-length string, str is split into individual characters. If pattern contains groups, the respective matches will be returned in the array as well.
+
+If pattern is nil, the value of $; is used. If $; is nil (which is the default), str is split on whitespace as if ‘ ’ were specified.
+
+If the limit parameter is omitted, trailing null fields are suppressed. If limit is a positive number, at most that number of split substrings will be returned (captured groups will be returned as well, but are not counted towards the limit). If limit is 1, the entire string is returned as the only entry in an array. If negative, there is no limit to the number of fields returned, and trailing null fields are not suppressed.
+
+When the input str is empty an empty Array is returned as the string is considered to have no fields to split.
+
+```ruby
+"a  b    c".split       		#=> ["a", "b", "c"]
+"a  b    c".split(' ')  		#=> ["a", "b", "c"]
+"a  b    c".split(/ /)  		#=> ["a", "", "b", "", "", "", "c"]
+"abcdef".split(//, 3)   		#=> ["a", "b", "cdef"]
+"a  b    c".split('')   		#=> ["a", " ", " ", "b", " ", " ", " ", " ", "c"]
+"a  b    c".split(//)   		#=> ["a", " ", " ", "b", " ", " ", " ", " ", "c"]
+# 1. a\s, \s被移除 => a
+# 2. \s,  \s被移除 => ""
+# 3. b\s, \s被移除 => b
+# 4. \s,  \s被移除 => ""
+# 5. \s,  \s被移除 => ""
+# 6. \s,  \s被移除 => ""
+# 7. c, 		  => c
+"a\s\sb\s\s\s\sc".split(/\s/) 	#=> ["a", "", "b", "", "", "", "c"]
+
+"1, 2.34,56, 7".split(%r{,\s*}) #=> ["1", "2.34", "56", "7"]
+"hi mom".split(%r{\s*})         #=> ["h", "i", "m", "o", "m"]
+
+"mellow yellow".split("ello")   #=> ["m", "w y", "w"]
+"1,2,,3,4,,".split(',')         #=> ["1", "2", "", "3", "4"]
+"1,2,,3,4,,".split(/,*/)		#=> ["1", "2", "3", "4"]
+
+"1,2,,3,4,,".split(',', 4)      #=> ["1", "2", "", "3,4,,"]
+"1,2,,3,4,,".split(',', -4)     #=> ["1", "2", "", "3", "4", "", ""]
+
+# 
+"1:2:3".split(/(:)()()/, 2)     #=> ["1", ":", "", "", "2:3"]
+
+"".split(',', -1)               #=> []
+```
+
+
+[String::strip! -> self or `nil`](https://ruby-doc.org/core-2.7.2/String.html#method-i-strip-21)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

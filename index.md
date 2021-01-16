@@ -6,12 +6,19 @@ layout: darkly
 title: changsanjiang blog
 ---
 <div class="home">
-	<h1>Posts</h1>
-	<ul>
+	<h1 style="text-align: center;">Posts</h1>
+	<ul style="padding: 0">
 		<li>
 			<h2>
-				{% for post in site.posts %}
-				<li>{{ post.date | date_to_string }} <a href="{{ site.baseurl }}{{ post.url }}">{{ post.title }}</a></li>
+				{% for tag in site.tags %}
+				<h3>{{ tag[0] }}</h3>
+				<ul>
+					{% for post in tag[1] %}
+						<li>
+							<a href="{{ post.url }}">{{ post.title }}</a>
+						</li>
+					{% endfor %}
+				</ul>
 				{% endfor %}
   		</h2>
 		</li>

@@ -29,6 +29,9 @@ markdown: kramdown
 theme: jekyll-theme-midnight
 plugins:
   - jekyll-feed
+  
+# https://medium.com/@vilcins/syntax-highlight-with-rouge-in-jekyll-6bf9e45f9dda
+highlighter: rouge
 
 # Exclude from processing.
 # The following items will not be processed, by default. Create a custom list
